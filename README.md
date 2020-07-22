@@ -1,5 +1,9 @@
-Composer Install
+1.Composer Install
 <br>
-npm install
+2.npm install
 <br>
-php artisan serve
+3.php artisan migrate
+<br>
+4.php artisan serve
+<br>
+!! DB Name : task1
