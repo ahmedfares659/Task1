@@ -1,0 +1,61 @@
+@extends('layout.index')
+@section('content')
+<div class="list-group">
+
+
+    @foreach($subs as $child)
+
+    <li>
+
+
+
+        @if(count($child->subs))
+
+        @include('Category.tree',['childs' => $child->subs])
+
+        @endif
+
+    </li>
+
+    @endforeach
+    <ul class="list-group">
+        @if($ChildofChild->SubParent)
+        @foreach ($ChildofChild->SubParent as $done)
+        <li class="list-group-item">
+            {{ $done->C_Name}}
+        </li>
+        @endforeach
+        @endif
+    </ul>
+    <ul class="list-group">
+        @if($cat->SubCategory)
+        @foreach ($cat->MainCategory as $ChildofChild)
+        <li class="list-group-item">
+            {{ $ChildofChild->C_Name}}
+         
+        </li>
+        @endforeach
+        @endif
+    </ul>
+    <td>{{ $par->C_Name }}</td>
+    <td>
+        @if($par->SubCategory)
+        @foreach ($par->SubCategory as $cat)
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{$cat->C_Name}}
+            
+            @foreach($cat->SubParent as $final)
+                
+            @endforeach
+            </li>
+
+        </ul>
+
+        @endforeach
+        @endif
+
+    </td>
+
+</div>
+@endsection
